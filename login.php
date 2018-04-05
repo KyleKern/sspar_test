@@ -12,7 +12,7 @@
             Password: <input type="password" name="password"  />
             <input type="submit" name="loginForm" />
         </form>
-        <form action = "admin.html" method ="post">
+        <form action = "processLogin.php" method ="post">
         <input type="submit" value="Return to Homepage" /> 
         </form>
 

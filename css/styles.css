@@ -18,33 +18,11 @@ body{
   
 }
 .container2{
-    padding-right: 40px;
-    padding-left: 40px;
-    float: right;
-    width: 85%;
+    width: 100%;
     background-color:#C6CFAE;
 }
 .search{
     background-color: #AEC6CF;
     color: black;
     padding: 25px;
-}
-.column {
-    background-color: #AEC6CF;
-    position: fixed;
-    top: 175px;
-    bottom: 0;
-    left: 0;
-    z-index: 1000;
-    display: block;
-    padding: 20px;
-    overflow-x: hidden;
-    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-
-}
-.distribute {
-    float: left;
-    max-width: 160px;
-    margin: 0;
-    padding: 1em;
 }

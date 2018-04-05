@@ -1,12 +1,12 @@
 <?php
-session_start();  
+//session_start();  
 
 include 'dbConnection.php';
 
 $dbConn = getDatabaseConnection('heroku_061d37f76a72480');
 
 $username = $_POST['username'];
-$password = sha1($_POST['password']); 
+$password = $_POST['password']; 
 
 $sql = "SELECT * 
         FROM admin
@@ -23,16 +23,16 @@ $record = $statement->fetch(PDO::FETCH_ASSOC);
 print_r($record);
 
     if (empty($record)) { 
-        header('Location: index.html');
+        header('Location: login.php');
         echo "Wrong username or password!";
-        echo "<a href='index.html'> Try again </a>";
+        echo "<a href='login.php'> Try again </a>";
         
     } else {
         session_start();
         $_SESSION['username'] = $record['username'];
         $_SESSION['adminName'] = $record['firstName'] . " " . $record['lastName'];
         
-        header('Location: admin.html');  //redirects to another program        
+        header('Location: index.html');  //redirects to another program        
         
     }
 ?>
