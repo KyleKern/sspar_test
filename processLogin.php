@@ -23,16 +23,16 @@ $record = $statement->fetch(PDO::FETCH_ASSOC);
 print_r($record);
 
     if (empty($record)) { 
-        header('Location: login.php');
+        header('Location: index.html');
         echo "Wrong username or password!";
-        echo "<a href='login.php'> Try again </a>";
+        echo "<a href='index.html'> Try again </a>";
         
     } else {
         session_start();
         $_SESSION['username'] = $record['username'];
         $_SESSION['adminName'] = $record['firstName'] . " " . $record['lastName'];
         
-        header('Location: index.html');  //redirects to another program        
+        header('Location: admin.php');  //redirects to another program        
         
     }
 ?>
