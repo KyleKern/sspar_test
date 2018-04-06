@@ -26,3 +26,11 @@ body{
     color: black;
     padding: 25px;
 }
+.admin{
+    min-height: 100%;
+    height: 100%;
+    padding-top: 30px;
+    padding-left: 20%;
+    padding-right: 20%;
+    text-align: center;
+}
