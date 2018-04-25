@@ -59,6 +59,12 @@ function listUsers() {
         <input id="search" type="text" placeholder="Type here">
         <input id="submit" type="submit" value="Search">
       </form>
+      <br/>
+     <form action="about.html">
+        <input type="submit" value="About Us">
+      </form>
+       <br/>
+     <form action="logout.php">
      <!-- <form action="404.html">
         <input type="submit" value="reorder soon">
       </form>
