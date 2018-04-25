@@ -8,6 +8,30 @@ if(!isset($_SESSION['username'])){
 include 'dbConnection.php';
 
 $con = getDatabaseConnection('heroku_87e7042268995be');
+
+
+function listUsers() {
+    global $con;
+    $namedParameters = array();
+    $results = null;
+    $sql = "SELECT Description
+            FROM sales";
+    $stmt = $con -> prepare ($sql);
+    $stmt -> execute($namedParameters);
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    echo "<table id=\"table1\">
+        <tr>
+ 	    <th> description </th>
+        </tr>";
+    foreach($results as $result) {
+        echo "<tr>";
+        echo "<td><a href=\"info.php?name=". "&Description=" . 
+            $result['Description'] .
+            "\">" . $result['Description'] . "</a></td>";
+        echo "</tr>";
+    }
+    echo "</table>";
+}
 ?>
 
 <!DOCTYPE html>
@@ -35,9 +59,10 @@ $con = getDatabaseConnection('heroku_87e7042268995be');
         <input id="search" type="text" placeholder="Type here">
         <input id="submit" type="submit" value="Search">
       </form>
-      <form action="404.html">
+     <!-- <form action="404.html">
         <input type="submit" value="reorder soon">
       </form>
+      -->
       <form action="logout.php">
         <input type="submit" value="Logout" />
       </form>
@@ -47,124 +72,13 @@ $con = getDatabaseConnection('heroku_87e7042268995be');
       <div class="clear"></div>
      
 <section class="container2">
-   <h2 class="sub-header">Section title</h2>
-          <div class="table-responsive">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                  <th>#</th>
-                  <th>Item</th>
-                  <th>Distributor</th>
-                  <th>Current Stock</th>
-                  <th>Projected</th>
-                </tr>
-                </thead>
-                <tr>
-                  <td>1,001</td>
-                  <td>Lorem</td>
-                  <td>ipsum</td>
-                  <td>dolor</td>
-                  <td>sit</td>
-                </tr>
-                <tr>
-                  <td>1,001</td>
-                  <td>Lorem</td>
-                  <td>ipsum</td>
-                  <td>dolor</td>
-                  <td>sit</td>
-                </tr>
-                <tr>
-                  <td>1,001</td>
-                  <td>Lorem</td>
-                  <td>ipsum</td>
-                  <td>dolor</td>
-                  <td>sit</td>
-                </tr>
-                <tr>
-                  <td>1,001</td>
-                  <td>Lorem</td>
-                  <td>ipsum</td>
-                  <td>dolor</td>
-                  <td>sit</td>
-                </tr>
-                <tr>
-                  <td>1,001</td>
-                  <td>Lorem</td>
-                  <td>ipsum</td>
-                  <td>dolor</td>
-                  <td>sit</td>
-                </tr>
-                <tr>
-                  <td>1,001</td>
-                  <td>Lorem</td>
-                  <td>ipsum</td>
-                  <td>dolor</td>
-                  <td>sit</td>
-                </tr>
-                <tr>
-                  <td>1,001</td>
-                  <td>Lorem</td>
-                  <td>ipsum</td>
-                  <td>dolor</td>
-                  <td>sit</td>
-                </tr>
-                <tr>
-                  <td>1,001</td>
-                  <td>Lorem</td>
-                  <td>ipsum</td>
-                  <td>dolor</td>
-                  <td>sit</td>
-                </tr>
-                <tr>
-                  <td>1,001</td>
-                  <td>Lorem</td>
-                  <td>ipsum</td>
-                  <td>dolor</td>
-                  <td>sit</td>
-                </tr>
-                <tr>
-                  <td>1,001</td>
-                  <td>Lorem</td>
-                  <td>ipsum</td>
-                  <td>dolor</td>
-                  <td>sit</td>
-                </tr>
-                <tr>
-                  <td>1,001</td>
-                  <td>Lorem</td>
-                  <td>ipsum</td>
-                  <td>dolor</td>
-                  <td>sit</td>
-                </tr>
-                <tr>
-                  <td>1,001</td>
-                  <td>Lorem</td>
-                  <td>ipsum</td>
-                  <td>dolor</td>
-                  <td>sit</td>
-                </tr>
-                <tr>
-                  <td>1,001</td>
-                  <td>Lorem</td>
-                  <td>ipsum</td>
-                  <td>dolor</td>
-                  <td>sit</td>
-                </tr>
-                <tr>
-                  <td>1,001</td>
-                  <td>Lorem</td>
-                  <td>ipsum</td>
-                  <td>dolor</td>
-                  <td>sit</td>
-                </tr>
-                
-                <tbody>
-               </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
+    <center>
+   <h2 class="sub-header">Items</h2>
+   
+         <?php 
+ 	  listUsers();
+    ?>
+</center>
 </section>
     </body>
 </html>
