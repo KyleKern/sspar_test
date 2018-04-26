@@ -63,7 +63,9 @@ function listUsers() {
      <form action="about.html">
         <input type="submit" value="About Us">
       </form>
-       <br/>
+         <form action="about.html">
+        <input type="submit" value="About Us">
+      </form>
      <form action="logout.php">
      <!-- <form action="404.html">
         <input type="submit" value="reorder soon">
