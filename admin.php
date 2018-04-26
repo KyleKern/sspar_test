@@ -53,19 +53,22 @@ function listUsers() {
       <div class="sscs"> 
           <img src="./img/sscs-logo.png" alt="SSCS">
       </div> 
-      
       <div class="search">
       <form action="users.php" method="GET">
         <input id="search" type="text" placeholder="Type here">
         <input id="submit" type="submit" value="Search">
       </form>
-      <br/>
+      <h5>
+          POSsearch
+      </h5>
+      <form action="users.php" method="GET">
+        <input id="search" type="text" placeholder="Type here">
+        <input id="submit" type="submit" value="Search">
+      </form>
      <form action="about.html">
         <input type="submit" value="About Us">
       </form>
-         <form action="about.html">
-        <input type="submit" value="About Us">
-      </form>
+       <br/>
      <form action="logout.php">
      <!-- <form action="404.html">
         <input type="submit" value="reorder soon">
