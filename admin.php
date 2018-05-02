@@ -55,9 +55,9 @@ function listUsers() {
  	    <th> Total Stock &nbsp &nbsp  &nbsp&nbsp &nbsp  &nbsp &nbsp  &nbsp &nbsp  &nbsp</th>
         </tr>";
     foreach($results as $result) {
-        echo "<tr>";
-        echo "<td><a href=\"info.php?name=".$result['description']."\">". $result['description'] . "</a></td>".
-        "<td>".$result['PosCode']."</td>".
+         echo "<tr>";
+        echo "<td>". $result['description'] . "</a></td>".
+        "<td><a href=\"info.php?name=".$result['POScode']."\">".$result['PosCode']."</td>".
         "<td>".$result['salesQuntity']."</td>".
         "<td>".$result['salesAmount']."</td>";
         echo "</tr>";
