@@ -23,25 +23,7 @@
                     //alert(status);
                 }
             });
-    }
-                
-    // Filling array for item to be used in autocomplete
-    global $con;
-    $namedParameters = array();
-    $results = null;
-    $sql = "SELECT Description
-            FROM sales";
-    $stmt = $con -> prepare ($sql);
-    $stmt -> execute($namedParameters);
-    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    // availableItems is the array name used for the prediction
-    $availableItems = array();
-    foreach($results as $result){
-        array_push($availableItems,$result['Description']);
-    }
-    sort($availableItems);    
-                
-                
+                }
 </script>
 
 <?php
@@ -82,8 +64,22 @@ function listUsers() {
     }
     echo "</table>";
 }
-
-
+    //SETTING UP ARRAy TO BE PASSED INTO PREDICTION FUNCTION
+    global $con;
+    $namedParameters = array();
+    $results = null;
+    $sql = "SELECT Description
+            FROM sales";
+    $stmt = $con -> prepare ($sql);
+    $stmt -> execute($namedParameters);
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    // availableItems is the array name used for the prediction
+    $availableItems = array();
+    foreach($results as $result){
+        array_push($availableItems,$result['Description']);
+    }
+    sort($availableItems);
+    //END
 ?>
 
 <!DOCTYPE html>
@@ -98,6 +94,14 @@ function listUsers() {
         <!-- Latest compiled JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="./css/styles.css" type="text/css" />
+        <!--Prediction dependencies-->
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <!--Converting from php array to usabel javascript array-->
+        <script>
+              jArray= <?php echo json_encode($availableItems); ?>;
+        </script>
     </head>
     
     <body>
@@ -108,9 +112,8 @@ function listUsers() {
       <div class="search">
       <form action="users.php" method="GET">
         <input id="search" type="text" placeholder="Type here">
-         <script>
-            $( "#searchItem" ).autocomplete({source: jArray});
-        </script>
+        <!--script to predict text on user input-->
+        <script>$( "#search" ).autocomplete({source: jArray});</script>
         <input id="submit" type="submit" value="Search">
       </form>
       <form action="users.php" method="GET">
