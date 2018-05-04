@@ -23,7 +23,43 @@
                     //alert(status);
                 }
             });
-                }
+        }
+    function passvalue(description) {
+    
+    
+  
+   
+        var item = description;
+        alert(item);
+        console.log(item);
+        console.log("Entered Ajax Function")
+        $('#loadingmessage').show();
+        
+        // var input = $("#user-input").val();
+        $.ajax({
+              type: "POST",
+              dataType: 'text',
+              url: 'http://capstone-jsagisi.c9users.io:8081/learning',
+              data: JSON.stringify({userInput: item}),
+              contentType: 'application/json',
+              success: function(response){
+                    console.log("Made it");
+                    $('#loadingmessage').hide();
+                    output = response;
+                    console.log(output);
+                    console.log(output);
+                   $("#results").text(output);
+                },
+                 error: function(request,status, message) {
+                        console.log(request);
+                        console.log("----");
+                        console.log(status);
+                        }
+          });
+ 
+
+    
+}
 </script>
 
 <?php
@@ -32,6 +68,8 @@ session_start();
 if(!isset($_SESSION['username'])){
    header("Location:index.html");
 }
+
+
 
 include 'dbConnection.php';
 
@@ -56,8 +94,8 @@ function listUsers() {
         </tr>";
     foreach($results as $result) {
          echo "<tr>";
-        echo "<td>". $result['description'] . "</a></td>".
-        "<td><a href=\"info.php?name=".$result['POScode']."\">".$result['PosCode']."</td>".
+        echo "<td><a href=# onclick=\"passvalue('".$result['description']."')\">".$result['description']."</a></td>".
+        "<td>".$result['PosCode']."</td>".
         "<td>".$result['salesQuntity']."</td>".
         "<td>".$result['salesAmount']."</td>";
         echo "</tr>";
@@ -105,6 +143,9 @@ function listUsers() {
     </head>
     
     <body>
+        <div id='loadingmessage' style='display:none'>
+      <img src='loadinggraphic.gif'/>
+</div>
     <section class="container">
       <div class="sscs"> 
           <img src="./img/sscs-logo.png" alt="SSCS">
@@ -133,11 +174,16 @@ function listUsers() {
 <section class="container2">
     <center>
    <h2 class="sub-header">Top Selling Items</h2>
+   <div id="results">
+       
+   </div>
    <div id=table>
          <?php 
+    
  	  listUsers();
     ?>
     </div>
+
 </center>
 </section>
     </body>
