@@ -2,7 +2,7 @@
      function validatePOS() {
              $.ajax({
                 type: "GET",
-                url: "https://capstone-frontend-kylekern.c9users.io/checkPOS.php",
+                url: "https://sspar.herokuapp.com/checkPOS.php",
                 dataType: "json",
                 data: {
                     'posNum': $('#posNum').val(),
