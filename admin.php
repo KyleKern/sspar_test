@@ -1,8 +1,8 @@
 <script>
      function validatePOS() {
-            $.ajax({
+             $.ajax({
                 type: "GET",
-                url: "https://capstone-frontend-kylekern.c9users.io/checkPOS.html",
+                url: "https://capstone-frontend-kylekern.c9users.io/checkPOS.php",
                 dataType: "json",
                 data: {
                     'posNum': $('#posNum').val(),
