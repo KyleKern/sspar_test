@@ -1,8 +1,8 @@
 <script>
      function validatePOS() {
-            $.ajax({
+             $.ajax({
                 type: "GET",
-                url: "https://capstone-frontend-kylekern.c9users.io/checkPOS.html",
+                url: "https://sspar.herokuapp.com/checkPOS.php",
                 dataType: "json",
                 data: {
                     'posNum': $('#posNum').val(),
@@ -158,8 +158,8 @@ function listUsers() {
         <input id="submit" type="submit" value="Search">
       </form>
       <form action="users.php" method="GET">
-        <input onchange="validatePOS();"input id="search" type="text" placeholder=" POS search">
-        <input id="submit" type="submit" value="Search">
+        <input onchange="validatePOS();"input id="search" type="text" placeholder="POS search">
+        <input id="submit" type="submit" value="Search"><span id="username-valid"></span>
       </form>
       <form action="about.html">
         <input type="submit" value="About Us">
