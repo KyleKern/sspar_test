@@ -81,7 +81,7 @@ function listUsers() {
     $namedParameters = array();
     $results = null;
     $sql = "SELECT *
-            FROM topsales";
+            FROM topsales2";
     $stmt = $con -> prepare ($sql);
     $stmt -> execute($namedParameters);
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
