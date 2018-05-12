@@ -96,7 +96,7 @@ function listUsers() {
          echo "<tr>";
         echo "<td><a href=# onclick=\"passvalue('".$result['description']."')\">".$result['description']."</a></td>".
         "<td>".$result['PosCode']."</td>".
-        "<td>".$result['salesQuntity']."</td>".
+        "<td>".$result['salesWuntity']."</td>".
         "<td>".$result['salesAmount']."</td>";
         echo "</tr>";
     }
